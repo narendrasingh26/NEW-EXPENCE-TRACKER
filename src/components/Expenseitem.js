@@ -1,21 +1,24 @@
+import React,{useState} from 'react';
 import ExpenseDate from './ExpenseDate';
 import Card from './Card';
 import './ExpenseItem.css';
 
-function ExpenseItem(props) {
-    let Remove='delete'
+const ExpenseItem=(props)=> {
+  const[amount,setAmount]=useState(props.amount);
+
+
     const clickHandler=()=>{
-        Remove='delete';
-        console.log(Remove)
+        setAmount(100);
+        console.log(amount);
     }
   return (
     <Card className='expense-item'>
       <ExpenseDate date={props.date} />
       <div className='expense-item__description'>
         <h2>{props.title}</h2>
-        <div className='expense-item__price'>${props.amount}</div>
+        <div className='expense-item__price'>${amount}</div>
       </div>
-      <div className='expense-item__price' onClick={clickHandler}>Delete Expense</div>
+      <div className='expense-item__price' onClick={clickHandler}>Change Expense</div>
     </Card>
   );
 }
