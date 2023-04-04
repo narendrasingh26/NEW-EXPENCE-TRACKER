@@ -1,24 +1,21 @@
- import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
- import ExpenseDetails from './ExpenseDetails';
+import Card from './Card';
+import './ExpenseItem.css';
 
-  import './ExpenseItem.css'; 
-
-const ExpenseItem=(props)=> {
-  
-  const locationOfItem='locationOfExpenditure';
+function ExpenseItem(props) {
+    let Remove='delete'
+    const clickHandler=()=>{
+        Remove='delete';
+        console.log(Remove)
+    }
   return (
-    <Card className="expense-item">
-     
-      <ExpenseDate date={props.date}/>
-      <ExpenseDetails ammount={props.ammount} title={props.title}/>
-     
-      {/* <div>{props.date.toISOString()}</div> */}
-      <div className="expense-item__description">
+    <Card className='expense-item'>
+      <ExpenseDate date={props.date} />
+      <div className='expense-item__description'>
         <h2>{props.title}</h2>
-        <div className="expense-item__price">{props.amount}</div>
-        <div className="expense-item__price" >{locationOfItem}</div>
+        <div className='expense-item__price'>${props.amount}</div>
       </div>
+      <div className='expense-item__price' onClick={clickHandler}>Delete Expense</div>
     </Card>
   );
 }
